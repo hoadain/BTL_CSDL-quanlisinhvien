@@ -182,7 +182,7 @@ EXEC XoaSinhVien 11;
 ```
 ### 2.CHức năng nâng cao
 -- cập nhập tính điểm trung bình: tự động tính điểm trung bình vào bảng
-\`\`\`
+
 -- Tạo trigger tính điểm trung bình của sinh viên khi có điểm mới được thêm vào bảng Diem
 CREATE TRIGGER tinh_diem_trung_binh
 ON Diem
@@ -204,13 +204,13 @@ BEGIN
     END
 END;
 GO
-\`\`\`
+```
 
 ![z5555277601365_61c016a2f05361a9a295abacc3f687d3](https://github.com/hoadain/BTL_CSDL-quanlisinhvien/assets/168847370/601ea6fb-2aea-4133-85bd-07f706fde585)
 
 - tự động tính tích điểm của sinh viên và lưu vào bảng tương ứng
   -- Tạo bảng DiemChu để lưu các điểm chữ và khoảng điểm tương ứng
-  ```
+```
 CREATE TABLE DiemChu (
     DiemChu NVARCHAR(10) PRIMARY KEY,
     DiemMin FLOAT,
@@ -228,16 +228,17 @@ VALUES
     ('C', 4.0, 5.49),
     ('F', 0, 3.99);
 ```
-```
 -- Xóa trigger cũ nếu tồn tại
 
+```
 IF EXISTS (SELECT * FROM sys.triggers WHERE name = 'update_DiemChu')
 BEGIN
     DROP TRIGGER update_DiemChu;
 END;
 GO
-
+```
 -- Tạo lại trigger mới để cập nhật cột DiemChu
+```
 CREATE TRIGGER update_DiemChu
 ON Diem
 AFTER INSERT	
@@ -281,12 +282,12 @@ BEGIN
     DEALLOCATE cur;
   END;
 GO
-
 ```
 
 ![z5555288375371_fbd279b9759e40e938cea8aef89f2488](https://github.com/hoadain/BTL_CSDL-quanlisinhvien/assets/168847370/2f9dd10e-7ca7-4e9f-bf65-fb98665918f5)
 
 - hiển thị những sinh viên thi trượt có điểm tích F
+
 ```
 CREATE VIEW SinhVien_MonHoc_F
 AS
@@ -300,6 +301,7 @@ JOIN DiemChu dc ON d.DiemChu = dc.DiemChu
 WHERE dc.DiemChu = 'F';
 SELECT * FROM SinhVien_MonHoc_F; 
 ```
+
 ![z5555315296831_6cf4a9cd18c9201dc381ee57cbbd830e](https://github.com/hoadain/BTL_CSDL-quanlisinhvien/assets/168847370/0208a8b8-fc22-4bc4-ab84-e46fc027036f)
 
 
