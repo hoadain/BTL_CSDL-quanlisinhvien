@@ -5,21 +5,34 @@
 - hoàn thành: 19-6-2024
   ## chức năng cơ bản
   ### 1. Quản lí
-  1. quản lí sinh viên
+-  quản lí sinh viên
      - thêm sinh viên : cho phép thêm sinh viên vào cơ sở dữ liệu
      - sửa sinh viên: cho phép sửa sinh viên vào cơ sở dữ liệu
      - xóa sinh viên: cho phép xóa sinh viên ra khỏi cơ sở dữ liệu
      - tìm kiếm sinh viên: hiển thị danh sách sinh viên
+- quản lí điểm số
+    - thêm : cho phép sửa điểm số vào cơ dữ liệu
+    - Sửa : cho phép sửa điểm
+    - tính điểm số trung bình
+    - đổi điểm thành tích
+    - xóa điểm
+- quản lí môn học
+    - thêm: thêm môn học vào cơ sở dữ liệu
+    - sửa môn học
+    - xóa môn học theo mã môn, tên môn
+    -tìm kiếm môn học theo mã
 ### 2. chức năng truy vấn
 - tìm kiếm sinh viên
 - xem thông tin sinh viên
 - xem điểm của sinh viên
 - xem môn học
+- xem điểm
+- xem tich của các môn học
 ### 3. Chức năng nâng cao
 - cập nhập tính điểm trung bình: tự động tính điểm trung bình vào bảng
 
 - tự động tính tích điểm của sinh viên và lưu vào bảng tương ứng
-1. Báo cáo thống kê
+- Báo cáo thống kê
     - hiển sinh viên và môn học trượt môn 
 ## Thiết kế chương trình trong Sql
 ### 1. Tạo các bảng
@@ -184,6 +197,7 @@ EXEC XoaSinhVien 11;
 -- cập nhập tính điểm trung bình: tự động tính điểm trung bình vào bảng
 
 -- Tạo trigger tính điểm trung bình của sinh viên khi có điểm mới được thêm vào bảng Diem
+```
 CREATE TRIGGER tinh_diem_trung_binh
 ON Diem
 AFTER INSERT, UPDATE
